@@ -6,14 +6,8 @@ import org.json.simple.parser.ParseException;
 import spark.Request;
 import spark.Response;
 
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
-import java.io.*;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import static spark.Spark.port;
 import static spark.Spark.post;
@@ -29,7 +23,7 @@ public class Main {
     private String handleRequest(Request request, Response response) throws ParseException {
         String[] segments = request.uri().split("/");
         String channelName = segments[segments.length - 1];
-        String webHookUrl = System.getenv("#" + channelName);
+        String webHookUrl = System.getenv(channelName);
         if(webHookUrl == null) {
             response.status(404);
             return "Channel not found";
