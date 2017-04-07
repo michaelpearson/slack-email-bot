@@ -34,6 +34,9 @@ public class Main {
         System.out.println("Sending message to " + channelName);
         JSONObject incomingEmail = (JSONObject) new JSONParser().parse(request.body());
 
+        System.out.println(buildMessage(incomingEmail).toJSONString());
+
+        if(true) return "";
         try {
             URL endpoint = new URL(webHookUrl);
             HttpURLConnection connection = (HttpURLConnection)endpoint.openConnection();
@@ -62,6 +65,7 @@ public class Main {
                 messageBody);
 
         JSONObject build = new JSONObject();
+        build.put("mrkdwn", true);
         build.put("text", messageText);
 
         return build;
