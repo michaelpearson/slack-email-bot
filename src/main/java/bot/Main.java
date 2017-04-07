@@ -36,7 +36,6 @@ public class Main {
 
         System.out.println(buildMessage(incomingEmail).toJSONString());
 
-        if(true) return "";
         try {
             URL endpoint = new URL(webHookUrl);
             HttpURLConnection connection = (HttpURLConnection)endpoint.openConnection();
