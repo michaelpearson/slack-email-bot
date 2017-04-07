@@ -28,8 +28,10 @@ public class Main {
         String webHookUrl = System.getenv(channelName);
         if(webHookUrl == null) {
             response.status(404);
+            System.out.println("Channel: " + channelName + " not found.");
             return "Channel not found";
         }
+        System.out.println("Sending message to " + channelName);
         JSONObject incomingEmail = (JSONObject) new JSONParser().parse(request.body());
 
         try {
