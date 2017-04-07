@@ -1,1 +1,1 @@
-web:    java -jar target/email-slackbot.jar
+web:    java -jar target/email-slackbot.jar -cp "lib/*"
