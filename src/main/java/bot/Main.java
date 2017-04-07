@@ -87,6 +87,9 @@ public class Main {
 
     private String convertToMarkdown(JSONObject email) {
         String bodyHtml = (String)email.get("html");
+        if(bodyHtml == null) {
+            return (String)email.get("plain");
+        }
         Remark remark = new Remark();
         return remark.convert(bodyHtml);
     }
